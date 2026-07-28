@@ -90,6 +90,9 @@ All tool implementations live in `mssql-mcp-core/src/tools/`.
 | `SERVER_NAME` | SQL Server hostname |
 | `DATABASE_NAME` | Target database |
 | `SQL_AUTH_MODE` | `sql`, `windows`, or `aad` (default) |
+| `SQL_ENCRYPT` | `true`/`false` — connection encryption for `sql`/`windows` auth (default `false`; `aad` always encrypts) |
+| `SQL_HOST_NAME_IN_CERTIFICATE` | Override expected hostname in the server's TLS certificate |
+| `TRUST_SERVER_CERTIFICATE` | `true` to accept self-signed certificates |
 | `READONLY` | `true` disables write tools globally |
 | `ENVIRONMENTS_CONFIG_PATH` | Path to multi-environment JSON config |
 | `AUDIT_LOG_PATH` | Audit log output path (default: `logs/audit.jsonl`) |

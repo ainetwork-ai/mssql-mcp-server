@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { startMcpServer } from "@connorbritain/mssql-mcp-core";
+import { startMcpServer } from "@ainetwork/mssql-mcp-core";
 import pkg from "../package.json" with { type: "json" };
 
 startMcpServer({

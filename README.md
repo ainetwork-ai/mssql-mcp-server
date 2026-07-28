@@ -1,6 +1,6 @@
 # MSSQL MCP Server
 
-[![npm version](https://img.shields.io/npm/v/@connorbritain/mssql-mcp-server.svg)](https://www.npmjs.com/package/@connorbritain/mssql-mcp-server)
+[![npm version](https://img.shields.io/npm/v/@ainetwork/mssql-mcp-server.svg)](https://www.npmjs.com/package/@ainetwork/mssql-mcp-server)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 **Enterprise-grade Model Context Protocol server for Microsoft SQL Server.**
@@ -13,7 +13,7 @@ A production-ready MCP server built for real-world database work: exploring unfa
 |---------|-----|-------|----------|
 | **[mssql-mcp-reader](https://github.com/ConnorBritain/mssql-mcp-reader)** | `@connorbritain/mssql-mcp-reader` | 14 read-only | Analysts, auditors, safe exploration |
 | **[mssql-mcp-writer](https://github.com/ConnorBritain/mssql-mcp-writer)** | `@connorbritain/mssql-mcp-writer` | 17 (reader + data ops) | Data engineers, ETL developers |
-| **mssql-mcp-server** (this) | `@connorbritain/mssql-mcp-server` | 20 (all tools) | DBAs, full admin access |
+| **mssql-mcp-server** (this) | `@ainetwork/mssql-mcp-server` | 20 (all tools) | DBAs, full admin access |
 
 Choose the tier that matches your security requirements. All tiers share the same governance controls, audit logging, and multi-environment support.
 
@@ -98,7 +98,7 @@ Verify with `node -v` (should show `v20.x`). If you already have a newer Node ve
 ### Option 1: Install from npm (recommended)
 
 ```bash
-npm install -g @connorbritain/mssql-mcp-server@latest
+npm install -g @ainetwork/mssql-mcp-server@latest
 ```
 
 Then configure your MCP client:
@@ -108,7 +108,7 @@ Then configure your MCP client:
   "mcpServers": {
     "mssql": {
       "command": "npx",
-      "args": ["@connorbritain/mssql-mcp-server@latest"],
+      "args": ["@ainetwork/mssql-mcp-server@latest"],
       "env": { "SERVER_NAME": "localhost", "DATABASE_NAME": "mydb", "READONLY": "true" }
     }
   }
@@ -118,7 +118,7 @@ Then configure your MCP client:
 ### Option 2: Build from source
 
 ```bash
-git clone https://github.com/ConnorBritain/mssql-mcp-server.git
+git clone https://github.com/ainetwork-ai/mssql-mcp-server.git
 cd mssql-mcp-server/src/node
 npm install
 npm run build
@@ -142,6 +142,8 @@ Then point your MCP client to `src/node/dist/index.js` with your connection env 
 | `SQL_DOMAIN` | | Domain for Windows/NTLM auth (optional) |
 | `SQL_PORT` | | Custom port (default: `1433`). Useful for named instances or Docker containers on non-standard ports. |
 | `TRUST_SERVER_CERTIFICATE` | | Set to `true` for self-signed certificates or dev environments |
+| `SQL_ENCRYPT` | | Set to `true`/`false` to control connection encryption for `sql` and `windows` auth modes (default: `false`; `aad` mode always encrypts) |
+| `SQL_HOST_NAME_IN_CERTIFICATE` | | Override the expected hostname in the server's TLS certificate (useful behind load balancers or with CNAMEs) |
 | `CONNECTION_TIMEOUT` | | Connection timeout in seconds (default: `30`) |
 | `READONLY` | | Set to `true` to restrict to read-only tools (no INSERT, UPDATE, DELETE, DROP) |
 | `MAX_ROWS_DEFAULT` | | Auto-limit for SELECT queries without TOP/LIMIT (default: `1000`, range: 1-100000) |
@@ -168,6 +170,7 @@ Standard username/password auth against SQL Server. Works with local instances, 
   "SQL_USERNAME": "sa",
   "SQL_PASSWORD": "YourPassword123",
   "SQL_PORT": "1433",
+  "SQL_ENCRYPT": "true",
   "TRUST_SERVER_CERTIFICATE": "true"
 }
 ```
@@ -539,7 +542,7 @@ See [ROADMAP.md](./ROADMAP.md) for the full enterprise roadmap with status track
 - ✅ Dependency analysis (`inspect_dependencies`) for impact assessment
 
 **Recently completed:**
-- ✅ Shared core package (`@connorbritain/mssql-mcp-core`) — all three tiers are thin wrappers
+- ✅ Shared core package (`@ainetwork/mssql-mcp-core`) — all three tiers are thin wrappers
 - ✅ MCP Registry registration for all three packages
 - ✅ Deployment & bastion pattern documentation
 
@@ -553,7 +556,7 @@ See [ROADMAP.md](./ROADMAP.md) for the full enterprise roadmap with status track
 
 Contributions welcome! See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines. If you're working with SQL Server in environments where stability and security matter, I'd love to hear what tools would help you most.
 
-**If this project is useful to you, consider giving it a ⭐ on [GitHub](https://github.com/ConnorBritain/mssql-mcp-server) and sharing it with others who work with SQL Server.** The more eyes on it, the better it gets.
+**If this project is useful to you, consider giving it a ⭐ on [GitHub](https://github.com/ainetwork-ai/mssql-mcp-server) and sharing it with others who work with SQL Server.** The more eyes on it, the better it gets.
 
 ---
 
@@ -571,6 +574,6 @@ This package follows [semver](https://semver.org/). Note: version 1.0.1 is perma
 
 ---
 
-**Repository:** https://github.com/ConnorBritain/mssql-mcp-server  
-**npm package:** https://www.npmjs.com/package/@connorbritain/mssql-mcp-server  
-**Issues & support:** https://github.com/ConnorBritain/mssql-mcp-server/issues
+**Repository:** https://github.com/ainetwork-ai/mssql-mcp-server  
+**npm package:** https://www.npmjs.com/package/@ainetwork/mssql-mcp-server  
+**Issues & support:** https://github.com/ainetwork-ai/mssql-mcp-server/issues

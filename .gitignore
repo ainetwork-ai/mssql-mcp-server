@@ -20,3 +20,6 @@ logs/
 # MCP Publisher CLI (don't commit binary)
 mcp-publisher.exe
 mcp-publisher
+
+# Offline deployment bundles (pack:offline)
+*-offline.tar.gz

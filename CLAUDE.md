@@ -32,8 +32,8 @@ For tool implementations, see `mssql-mcp-core/src/tools/`. For server setup logi
 
 ## Current Implementation Status
 
-- **Version:** v0.6.0
-- **Core dependency:** `@connorbritain/mssql-mcp-core` ^0.6.0
+- **Version:** v0.6.6
+- **Core dependency:** `@ainetwork/mssql-mcp-core` ^0.6.6
 - **Tier:** `admin` — all tools enabled (read, write, and DDL)
 
 ## Build Commands
